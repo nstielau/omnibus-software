@@ -25,7 +25,6 @@ if platform == 'windows'
   dependency "ruby-windows"
   dependency "ruby-windows-devkit"
 else
-  dependency "cmake"
   dependency "libffi"
   dependency "ruby"
   dependency "rubygems"
