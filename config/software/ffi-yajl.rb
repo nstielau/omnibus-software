@@ -33,6 +33,7 @@ end
 build do
   bundle "install --without development_extras", :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
   bundle "exec rake gem", :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
+  command "rm -rf pkg/*java*"
   gem ["install pkg/ffi-yajl-*.gem",
        "--no-rdoc --no-ri"].join(" "), :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
 end
