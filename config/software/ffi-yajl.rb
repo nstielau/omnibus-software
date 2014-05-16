@@ -30,10 +30,11 @@ else
   dependency "rubygems"
 end
 
+env = {"PATH" => "#{install_dir}/embedded/bin:#{install_dir}/embedded/mingw/bin:#{ENV['PATH']}"}
+
 build do
-  bundle "install --without development_extras", :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
-  bundle "exec rake gem", :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
-  command "rm -rf pkg/*java*"
+  bundle "install --without development_extras", :env => env
+  bundle "exec rake gem", :env => env
+  command "rm -rf pkg/*java*", :env => env
   gem ["install pkg/ffi-yajl-*.gem",
-       "--no-rdoc --no-ri"].join(" "), :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
-end
+       "--no-rdoc --no-ri"].join(" "), :env => env
