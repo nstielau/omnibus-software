@@ -38,3 +38,4 @@ build do
   command "rm -rf pkg/*java*", :env => env
   gem ["install pkg/ffi-yajl-*.gem",
        "--no-rdoc --no-ri"].join(" "), :env => env
+end
