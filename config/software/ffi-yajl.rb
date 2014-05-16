@@ -30,7 +30,9 @@ else
   dependency "rubygems"
 end
 
-env = {"PATH" => "#{install_dir}/embedded/bin:#{install_dir}/embedded/mingw/bin:#{ENV['PATH']}"}
+sep = File::PATH_SEPARATOR || ":"
+
+env = {"PATH" => "#{install_dir}/embedded/bin" + sep + "#{install_dir}/embedded/mingw/bin" + sep + "#{ENV['PATH']}"}
 
 build do
   bundle "install --without development_extras", :env => env
